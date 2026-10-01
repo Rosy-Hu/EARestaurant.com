@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8f1111" />
+  <title>EA餐馆 · 9月Newsletter</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="gate active" id="passwordGate" aria-hidden="false">
+    <div class="gate-noise"></div>
+    <div class="gate-card">
+      <p class="gate-kicker">ONCE UPON A TIME IN PwC CHINA EA TEAM</p>
+      <h1>EA餐馆</h1>
+      <p class="gate-subtitle">请凭邀请码入席</p>
+      <form id="passwordForm" class="password-form">
+        <label for="passwordInput">入席口令（请输入GUID）</label>
+        <div class="password-row">
+          <input id="passwordInput" type="password" inputmode="numeric" autocomplete="one-time-code" placeholder="请输入口令" />
+          <button type="submit">开席</button>
+        </div>
+        <p class="password-error" id="passwordError" role="alert"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="page-shell" id="pageShell" aria-hidden="true">
+    <header class="hero" id="top">
+      <div class="hero-image" role="img" aria-label="EA餐馆电影感封面"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-topline">
+        <span class="roundel">EA</span>
+        <span>9月 Newsletter</span>
+      </div>
+      <div class="hero-copy">
+        <p class="hero-kicker">ONCE UPON A TIME IN PwC CHINA EA TEAM</p>
+        <h1>EA餐馆</h1>
+        <p class="hero-slogan">项目上桌，好事成宴</p>
+        <div class="rating-line">
+          <strong>4.9</strong>
+          <span class="stars">★★★★★</span>
+          <span>本月人气餐厅</span>
+        </div>
+        <div class="hero-tags">
+          <span>赢单菜单</span>
+          <span>人气菜单</span>
+          <span>户外野餐</span>
+          <span>明星大厨</span>
+          <span>生日宴</span>
+        </div>
+        <div class="hero-rankings" aria-label="本月趣味榜单">
+          <span>2026 APAC SAP 7星餐厅</span>
+          <span>全亚洲最强 FOT 餐馆榜</span>
+          <span>Finance 风味连续 5 年全国霸榜</span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="notice-card section-reveal">
+        <img class="notice-festival-deco" src="./assets/decor/festival-pillar-transparent.png" alt="" />
+        <div class="section-label">双节迎宾</div>
+        <h2>欢迎光临，九月好味已上桌</h2>
+      </section>
+
+      <section id="menu" class="content-section section-reveal">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">赢单菜单</p>
+            <h2>赢单菜单</h2>
+          </div>
+        </div>
+        <p class="section-lead">每道“菜”都是一次拿下、一次推进、一次并肩作战。</p>
+        <div class="menu-list" id="winList"></div>
+      </section>
+
+      <section id="featured" class="content-section section-reveal">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">人气菜单</p>
+            <h2>人气菜单（商米）</h2>
+          </div>
+          <span class="status-chip">内容待补充</span>
+        </div>
+        <p class="section-lead">商米人气菜还在备料中，后续可替换为真实项目、产品或业务亮点。</p>
+        <div class="featured-grid" id="featuredList"></div>
+      </section>
+
+      <section id="news" class="content-section section-reveal">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">户外野餐</p>
+            <h2>户外野餐 · EA山会</h2>
+          </div>
+        </div>
+        <div class="news-card" id="newsList"></div>
+      </section>
+
+      <section id="reviews" class="content-section section-reveal">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">明星大厨</p>
+            <h2>明星大厨</h2>
+          </div>
+          <span class="section-count" id="reviewCount"></span>
+        </div>
+        <div class="review-list" id="reviewList"></div>
+      </section>
+
+      <section id="birthdays" class="content-section birthday-section section-reveal">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">生日宴</p>
+            <h2>9月寿星请入席</h2>
+          </div>
+        </div>
+        <p class="section-lead">本月寿星名单已备好，鲜花、蛋糕和掌声请自行脑补。祝大家生日快乐，项目顺顺利利。</p>
+        <div class="birthday-scroll" id="birthdayList"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="deal-sheet" id="dealSheet" aria-hidden="true">
+    <button class="deal-sheet-scrim" id="dealSheetScrim" type="button" aria-label="关闭详情"></button>
+    <section class="deal-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="dealSheetTitle">
+      <div class="deal-sheet-handle"></div>
+      <button class="deal-sheet-close" id="dealSheetClose" type="button" aria-label="关闭详情">×</button>
+      <div class="deal-sheet-media">
+        <img id="dealSheetImage" src="" alt="" />
+      </div>
+      <div class="deal-sheet-content">
+        <span class="menu-badge" id="dealSheetBadge"></span>
+        <h3 id="dealSheetTitle"></h3>
+        <p id="dealSheetDetail"></p>
+      </div>
+    </section>
+  </div>
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <button type="button" class="modal-close" id="modalClose" aria-label="关闭图片">×</button>
+    <img id="modalImage" src="" alt="放大预览" />
+  </div>
+
+  <script src="./passwords.js"></script>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
